@@ -4,13 +4,158 @@
     <head>
         <meta charset="utf-8" />
         <title>Chat Rooms</title>
+		<link rel="stylesheet" href="scrollbar.css">
+		<style>
+			/* ===== Scrollbar CSS ===== */
+			/* Firefox */
+			* {
+			scrollbar-width: auto;
+			scrollbar-color: #999999 #f4f3f9;
+			}
+
+			/* Chrome, Edge, and Safari */
+			*::-webkit-scrollbar {
+			width: 12px;
+			}
+
+			*::-webkit-scrollbar-track {
+			background: #f4f3f9;
+			border-radius: 8px;
+			}
+
+			*::-webkit-scrollbar-thumb {
+			background-color: #999999;
+			border-radius: 8px;
+			border: 3px solid #f4f3f9;
+			}
+		</style>
+		<script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        What chat room would you like to enter?
-        <br>
-        <input id="room-name-input" type="text" size="100">
-        <br>
-        <input id="room-name-submit" type="button" value="Enter">
+    <body class="flex justify-center pt-24">
+		<div class="space-y-3 bg-[#F4F3F9] w-[max-content] h-[500px] overflow-y-scroll px-4 py-4 ml-4 mt-4 border-2 border-[#999999] rounded-md">
+			<h1 class="text-2xl font-bold text-[#6050AF] pb-2">Join a Conversation</h1>
+
+			<div><a href="{% url 'room' 'chinese' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/cn.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Mandarin Chinese</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #1</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'english' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">English</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #2</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'spanish' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/es.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Spanish</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #3</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'french' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">French</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #4</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'hindi' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/in.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Hindi</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #5</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'portuguese' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/pt.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Portuguese</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #6</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'italian' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/it.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Italian</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #7</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'arabic' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/sa.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Arabic</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #8</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'german' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/de.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">German</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #9</h4>
+				</div>
+			</div>
+			</a></div>
+
+			<div><a href="{% url 'room' 'swedish' %}">
+			<div class="w-96 h-20 bg-[#F4F3F9] transition-colors duration-300 ease-in-out hover:bg-[#E4E3E9] hover:border-[#666666] border-[#999999] border-2 rounded-md grid grid-cols-5 space-x-3">
+				<div class="col-span-1 my-auto mx-auto">
+					<img src="https://hatscripts.github.io/circle-flags/flags/se.svg" class="rounded-[50%] w-[65%] ml-[15%] brightness-[85%]"></img>
+				</div>
+				<div class="col-span-4 my-auto">
+					<h1 class="text-lg font-bold text-[#6050AF]">Swedish</h1>
+					<h4 class="text-md text-[#6050AF]">Chat Room #10</h4>
+				</div>
+			</div>
+			</a></div>
+
+		</div>
         <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
