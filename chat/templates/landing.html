@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/Hh0KdMk/praxi-logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -50,10 +51,6 @@
             padding-left: 50px;
             align-items: center;
             gap: 15px;
-        }
-
-        .logo {
-
         }
 
         .title {
@@ -159,7 +156,7 @@
     <div class="page">
         <div class="header">
             <div class="header-left">
-                <img height="50" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1200px-Circle_Davys-Grey_Solid.svg.png" alt="Praxi logo" class="logo">
+                <a href="{% url 'landing' %}"><img height="50" width="50" src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
                 <p class="title">Praxi<p>
             </div>
             <ul class="header-links">
