@@ -28,10 +28,165 @@
 			border-radius: 8px;
 			border: 3px solid #f4f3f9;
 			}
+			* {
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            --text: #0a0811;
+            --background: #f4f3f9;
+            --primary: #6050af;
+            --secondary: #cea5d6;
+            --secondary30: hsl(290, 37%, 74%, 30%);
+            --accent: #c075bc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page, .header, .header-left, .header-links, .hero, .hero-buttons {
+            display: flex;
+        }
+
+        .page {
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 10px 0;
+            margin: 0;
+            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.12);
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background);
+            opacity: 0.7;
+        }
+
+        .header-left {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text);
+            padding-left: 50px;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+
+        }
+
+        .title {
+            margin: 0 5px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .header-links {
+            padding-right: 50px;
+            gap: 40px;
+        }
+
+        .hero {
+            padding: 200px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-main-text {
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        span {
+            font-weight: 1000;
+            background: linear-gradient(120deg,var(--primary),var(--accent),var(--primary)) 0 0 / 400% 100%;
+            color: transparent;
+            background-clip: text;
+            animation: gradient 6s linear infinite;
+        }
+
+        @keyframes gradient {
+            to {
+                background-position: 400% 0;
+            }
+        }
+
+        .hero-sub-text {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+            gap: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .toAi,
+        .toChat {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .toAI {
+            width: 200px;
+            flex: 1;
+            border: var(--primary) solid 2px;
+            border-radius: 0.5rem;
+            background-color: var(--secondary30);
+        }
+
+        .toChat {
+            flex: 1;
+            color: var(--background);
+            border-radius: 0.5rem;
+            background-color: var(--primary);
+        }
+
+        spline-viewer {
+            position: fixed;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a {
+            color: var(--text);     
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            text-decoration: none;
+        }
 		</style>
 		<script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="flex justify-center pt-24">
+    <body>
+		<div class="header">
+            <div class="header-left">
+                <img height="50" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1200px-Circle_Davys-Grey_Solid.svg.png" alt="Praxi logo" class="logo">
+                <p class="title">Praxi<p>
+            </div>
+            <ul class="header-links">
+                <li><a href="{% url 'landing' %}">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="{% url 'aiChat'}">Practice</a></li>
+                <li><a href="{% url 'chatHome'}">Chatroom</a></li>
+            </ul> 
+        </div>
+		<div class="flex justify-center pt-16">
 		<div class="space-y-3 bg-[#F4F3F9] w-[max-content] h-[500px] overflow-y-scroll px-4 py-4 ml-4 mt-4 border-2 border-[#999999] rounded-md">
 			<h1 class="text-2xl font-bold text-[#6050AF] pb-2">Join a Conversation</h1>
 
@@ -154,7 +309,7 @@
 				</div>
 			</div>
 			</a></div>
-
+		</div>
 		</div>
         <script>
         document.querySelector('#room-name-input').focus();

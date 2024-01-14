@@ -8,5 +8,8 @@ def hello_world_page(request):
 def chatHome(request):
 	return render(request, "chatHome.html")
 
+def aiChat(request):
+	return render(request, "ai_room.html")
+
 def room(request, room_name):
 	return render(request, "room.html", {"room_name": room_name})

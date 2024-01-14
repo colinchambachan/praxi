@@ -163,18 +163,18 @@
                 <p class="title">Praxi<p>
             </div>
             <ul class="header-links">
-                <li><a href="">Home</a></li>
+                <li><a href="{% url 'landing' %}">Home</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="">Practice</a></li>
-                <li><a href="">Chatroom</a></li>
+                <li><a href="{% url 'aiChat' %}">Practice</a></li>
+                <li><a href="{% url 'chatHome' %}">Chatroom</a></li>
             </ul> 
         </div>
         <div class="hero">
             <p class="hero-main-text"><span>AI-powered</span> language learning for the 21st century.</p>
             <p class="hero-sub-text">Hone your language skills by conversing with an AI and test your abilities with native speakers.</p>
             <div class="hero-buttons">
-                <a class="toAI"><p>Chat with AI</p></a>
-                <a class="toChat"><p>Chat with others</p></a>
+                <a class="toAI" href="{% url 'aiChat' %}"><p>Chat with AI</p></a>
+                <a class="toChat" href="{% url 'chatHome' %}"><p>Chat with others</p></a>
             </div>
         </div>
     </div>
