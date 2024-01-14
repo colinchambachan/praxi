@@ -8,8 +8,8 @@ import os
 def chatHome(request):
 	return render(request, "chatHome.html")
 
-def aiChat(request):
-	return render(request, "ai_room.html")
+# def aiChat(request):
+# 	return render(request, "ai_room.html")
 
 def room(request, room_name):
 	chat_log = Chat.objects.filter(room=room_name).order_by('timestamp')
@@ -44,12 +44,12 @@ def aiRoom(request, lang, diff):
 			#Appends gpt message + tag and saves to object
 			convo.append("AI: "+response.choices[0].message.content)
 			chatForm.content = convo
-			chatForm.save()
+			chatForm.save()	
 
-			return render(request, "aiRoom.html", {"content": convo})
+			return render(request, "ai_room.html", {"content": convo, "language": lang})
 		except:
 			#IN FUTURE REDIRECT BACK TO LANDING
-			return render(request, "aiRoom.html", {"content": convo})
+			return render(request, "ai_room.html", {"content": convo, "language": lang})
 	else:
 		#will return exception if object does not exist, which requires the object to be created
 		try:
@@ -57,4 +57,5 @@ def aiRoom(request, lang, diff):
 		except:
 			convoInstance = aiChat(belongs_to=request.user.username, difficulty=diff, language=lang, content=[])
 			convoInstance.save()
-		return render(request, "aiRoom.html", {"content": convoInstance.content})
+			return render(request, "ai_room.html", {"content": convoInstance.content, "language": lang})
+		return render(request, "ai_room.html", {"content": convo, "language": lang})
