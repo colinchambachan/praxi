@@ -1,0 +1,15 @@
+<div>
+    {% if content %}
+        {% for chat in content %}<p>{{ chat }}</p>{% endfor %}
+    {% endif %}
+</div>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="message">
+    <input type="text" name="difficulty" value="Beginner" hidden>
+    <input type="text" name="language", value="English" hidden>
+    <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Save Changes
+    </button>
+</form>
