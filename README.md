@@ -1,8 +1,12 @@
 # Requirements
-pip install 
+
+pip install
+
 - Daphne
 - channels_redis
+- openai
+- dotenv
 
 other:
-- Docker 
 
+- Docker
