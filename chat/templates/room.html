@@ -156,49 +156,48 @@
                          alt="Praxi logo"
                          class="logo">
                 </a>
-                <p class="title">
-                    Praxi
-                    <p>
-                    </div>
-                    <ul class="header-links">
-                        <li>
-                            <a href="{% url 'landing' %}">Home</a>
-                        </li>
-                        <li>
-                            <a href="">About</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'aiRoom' 'English' 'Intermediate' %}">Practice</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'chatHome' %}">Chatroom</a>
-                        </li>
-                    </ul>
+                <p class="title">Praxi</p>
+            </div>
+            <ul class="header-links">
+                <li>
+                    <a href="{% url 'landing' %}">Home</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+                <li>
+                    <a href="{% url 'aiRoom' 'English' 'Intermediate' %}">Practice</a>
+                </li>
+                <li>
+                    <a href="{% url 'chatHome' %}">Chatroom</a>
+                </li>
+            </ul>
+        </div>
+        <div class="flex flex-col px-48 space-y-6 mt-4">
+            <textarea class="p-5 rounded-md border-2 border-[#999999] bg-[#F4F3F9] pb-2"
+                      id="chat-log"
+                      cols="100"
+                      rows="20">{% if chat_log %}{% for chat in chat_log %}{{ chat.content }}&#13;&#10;{% endfor %}{% endif %}</textarea>
+            <div class="flex">
+                <div>
+                    <input class="mr-6 h-10 rounded-md border-2 border-[#999999] bg-[#F4F3F9]"
+                           id="chat-message-input"
+                           type="text"
+                           size="100" />
                 </div>
-                <div class="flex flex-col px-48 space-y-6 mt-4">
-                    <textarea class="rounded-md border-2 border-[#999999] bg-[#F4F3F9] pb-2" id="chat-log" cols="100" rows="20">
-			{% if chat_log %}{% for chat in chat_log %}{{ chat.content }}&#13;&#10;{% endfor %}{% endif %}
-</textarea>
-                    <div class="flex">
-                        <div>
-                            <input class="mr-6 h-10 rounded-md border-2 border-[#999999] bg-[#F4F3F9]"
-                                   id="chat-message-input"
-                                   type="text"
-                                   size="100" />
-                        </div>
-                        <div class="flex">
-                            <button class="bg-[#6050af] cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
-                                    id="speak">Click to Speak</button>
-                            <p id="textarea"></p>
-                            <input class="bg-[#6050af] cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
-                                   id="chat-message-submit"
-                                   type="button"
-                                   value="Send" />
-                        </div>
-                    </div>
-                    {{ room_name|json_script:"room-name" }}
+                <div class="flex">
+                    <button class="bg-[#6050af] cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
+                            id="speak">Click to Speak</button>
+                    <p id="textarea"></p>
+                    <input class="bg-[#6050af] cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
+                           id="chat-message-submit"
+                           type="button"
+                           value="Send" />
                 </div>
-                <script>
+            </div>
+            {{ room_name|json_script:"room-name" }}
+        </div>
+        <script>
       const roomName = JSON.parse(
         document.getElementById("room-name").textContent
       );
@@ -229,13 +228,13 @@
         const message = messageInputDom.value;
         chatSocket.send(
           JSON.stringify({
-            message: message,
+            message: '{{ username }}: ' + message,
           })
         );
         messageInputDom.value = "";
       };
-                </script>
-                <script>
+        </script>
+        <script>
       var speak = document.getElementById("speak");
       var textarea = document.getElementById("chat-message-input");
       var SpeechRecognition =
@@ -249,6 +248,6 @@
         var transcript = e.results[0][0].transcript;
         textarea.value = transcript;
       };
-                </script>
-            </body>
-        </html>
+        </script>
+    </body>
+</html>

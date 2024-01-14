@@ -13,7 +13,7 @@ def chatHome(request):
 
 def room(request, room_name):
 	chat_log = Chat.objects.filter(room=room_name).order_by('timestamp')
-	return render(request, "room.html", {"room_name": room_name, "chat_log": chat_log})
+	return render(request, "room.html", {"room_name": room_name, "chat_log": chat_log, "username": request.user.username})
 
 def aiRoom(request, lang, diff):
 	if request.method == 'POST':

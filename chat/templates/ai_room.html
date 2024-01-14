@@ -201,12 +201,12 @@
                             {% if content %}
                                 {% for chat in content %}
                                     {% if forloop.counter|divisibleby:2 %}
-                                        <div class="mb-2 text-right">
-                                            <p class="bg-[#6050AF] text-white rounded-lg py-2 px-4 inline-block">{{ chat }}</p>
-                                        </div>
-                                    {% else %}
                                         <div class="mb-2">
                                             <p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">{{ chat }}!</p>
+                                        </div>
+                                    {% else %}
+                                        <div class="mb-2 text-right">
+                                            <p class="bg-[#6050AF] text-white rounded-lg py-2 px-4 inline-block">{{ chat }}</p>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -218,18 +218,20 @@
                                 <p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">Bonjour!</p>
 </div> -->
                         </div>
-                        <div class="p-4 border-t flex">
+                        <div class="p-2 border-t">
                             <form method="POST">
                                 {% csrf_token %}
-                                <input type="text"
-                                       name='message'
-                                       placeholder="e.g. 'Provide a {{ language }} language quiz'"
-                                       class="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#6050AF]">
-                                <button id="send-button"
-                                        type='submit'
-                                        class="bg-[#6050AF] text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">
-                                    Send
-                                </button>
+                                <div class="flex">
+                                    <input type="text"
+                                           name='message'
+                                           placeholder="e.g. 'Provide a {{ language }} language quiz'"
+                                           class="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#6050AF]">
+                                    <button id="send-button"
+                                            type='submit'
+                                            class="bg-[#6050AF] text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">
+                                        Send
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -292,15 +294,15 @@
 			<div class="mt-2">
 				<div class="w-[100%]">
 					<textarea class="rounded-md w-[840px] bg-[#F4F3F9] border-2 border-[#999999]" rows="20" id="chat-log"></textarea>
-                                                                                                                                    				</div>
-                                                                                                                                    				<div class="w-[100%]">
-                                                                                                                                    					<input class="h-10" id="chat-message-input" type="text" size="100">
-                                                                                                                                    					<input class="bg-transparent hover:bg-[#6050AF] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-[#6050AF] hover:border-transparent rounded"
-                                                                                                                                    					       id="chat-message-submit"
-                                                                                                                                    					       type="button"
-                                                                                                                                    					       value="Send">
-                                                                                        				</div>
-                                            			</div>
+                                                                                                                                                                                                                        				</div>
+                                                                                                                                                                                                                        				<div class="w-[100%]">
+                                                                                                                                                                                                                        					<input class="h-10" id="chat-message-input" type="text" size="100">
+                                                                                                                                                                                                                        					<input class="bg-transparent hover:bg-[#6050AF] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-[#6050AF] hover:border-transparent rounded"
+                                                                                                                                                                                                                        					       id="chat-message-submit"
+                                                                                                                                                                                                                        					       type="button"
+                                                                                                                                                                                                                        					       value="Send">
+                                                                                                                                                				</div>
+                                                                        			</div>
 		</div>
 -->
 {{ room_name|json_script:"room-name" }}
