@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/Hh0KdMk/praxi-logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            --text: #0a0811;
+            --background: #f4f3f9;
+            --primary: #6050af;
+            --secondary: #cea5d6;
+            --secondary30: hsl(290, 37%, 74%, 30%);
+            --accent: #c075bc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page, .image-body, .signup {
+            display: flex;
+        }
+
+        .image-body {
+            position: absolute;
+            background: rgb(255,255,255,0.4);
+            width: 640px;
+            top: 8rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+        }
+
+        .logo-name {
+            font-family: "Montserrat", sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .signup {
+            flex-direction: column;
+            width: calc(100% - 640px);
+        }
+
+        .signup > div {
+            flex: 1;
+            padding-left: 25px;
+        }
+
+        .signup-top {
+            background-color: rgb(249,250,251);
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+
+        }
+
+        .signup-description {
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 500;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+
+        .signup-form-title {
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form > * {
+            max-width: 300px;
+        }
+
+        input + label {
+            padding-top: 8px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 20px 0;
+            border-style: none;
+            background-color: var(--primary);
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .login {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            background-color: rgb(249,250,251);
+        }
+
+
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <title>Praxi</title>
+</head>
+<body>
+    <div class="page">
+        <div class="flare">
+            <img class="image" src="https://i.ibb.co/PTd4Lqb/yves-cedric-schulze-ics9-Uxic-W78-unsplash.jpg" alt="yves-cedric-schulze-ics9-Uxic-W78-unsplash"/>
+            <div class="image-body">
+                <a href="{% url 'landing' %}"><img src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
+                <p class="logo-name">Praxi</p>
+            </div>
+        </div>
+
+        <div class="signup">
+            <div class="signup-top">
+                <p class="signup-description">
+                    Log in to Praxi
+                </p>
+            </div>
+            <div class="signup-form">
+                <p class="signup-form-title">Sign Up</p>
+                <form action="" method="post">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="eg. yourname@website.com" required>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                    <button type="submit">Create Account</button>
+                </form>
+            </div>
+            <div class="login">
+                <p class="login-prompt">New to Praxi? <a class="login-button" href="">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
