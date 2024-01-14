@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5gtb&9*o)u%x0ol2dl30wr9ol+g#32qek(9#9cooa)t(a13^d=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'locahost', '172.17.62.16']
+ALLOWED_HOSTS = ['127.0.0.1', 'locahost', '172.17.62.16', '172.17.211.97']
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'praxi',
-		'USER': 'admin',
+		'USER': 'postgres',
 		'PASSWORD': '12345',
 		'HOST': '127.0.0.1',
 		'PORT': '5432'

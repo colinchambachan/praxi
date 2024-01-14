@@ -1,52 +1,74 @@
 <!-- chat/templates/chat/room.html -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Chat Room</title>
-    </head>
-    <body>
-        <textarea id="chat-log" cols="100" rows="20">{% if chat_log %}{% for chat in chat_log %}{{ chat.content }}&#13;&#10;{% endfor %}{% endif %}</textarea>
-        <br>
-        <input id="chat-message-input" type="text" size="100">
-        <br>
-        <input id="chat-message-submit" type="button" value="Send">
-        {{ room_name|json_script:"room-name" }}
-        <script>
-        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+  <head>
+    <meta charset="utf-8" />
+    <title>Chat Room</title>
+  </head>
+  <body>
+    <textarea id="chat-log" cols="100" rows="20">
+{% if chat_log %}{% for chat in chat_log %}{{ chat.content }}&#13;&#10;{% endfor %}{% endif %}</textarea
+    >
+    <br />
+    <input id="chat-message-input" type="text" size="100" />
+    <div>
+      <button id="speak">Click to Speak</button>
+      <p id="textarea"></p>
+    </div>
+    <br />
+    <input id="chat-message-submit" type="button" value="Send" />
+    {{ room_name|json_script:"room-name" }}
+    <script>
+      const roomName = JSON.parse(
+        document.getElementById("room-name").textContent
+      );
 
-        const chatSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/chat/'
-            + roomName
-            + '/'
+      const chatSocket = new WebSocket(
+        "ws://" + window.location.host + "/ws/chat/" + roomName + "/"
+      );
+
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        document.querySelector("#chat-log").value += data.message + "\n";
+      };
+
+      chatSocket.onclose = function (e) {
+        console.error("Chat socket closed unexpectedly");
+      };
+
+      document.querySelector("#chat-message-input").focus();
+      document.querySelector("#chat-message-input").onkeyup = function (e) {
+        if (e.keyCode === 13) {
+          // enter, return
+          document.querySelector("#chat-message-submit").click();
+        }
+      };
+
+      document.querySelector("#chat-message-submit").onclick = function (e) {
+        const messageInputDom = document.querySelector("#chat-message-input");
+        const message = messageInputDom.value;
+        chatSocket.send(
+          JSON.stringify({
+            message: message,
+          })
         );
-
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
-        };
-
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        document.querySelector('#chat-message-input').focus();
-        document.querySelector('#chat-message-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
-
-        document.querySelector('#chat-message-submit').onclick = function(e) {
-            const messageInputDom = document.querySelector('#chat-message-input');
-            const message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
-            messageInputDom.value = '';
-        };
-        </script>
-    </body>
+        messageInputDom.value = "";
+      };
+    </script>
+    <script>
+      var speak = document.getElementById("speak");
+      var textarea = document.getElementById("chat-message-input");
+      var SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      var recognition = new SpeechRecognition();
+      speak.addEventListener("click", function () {
+        recognition.start();
+        textarea.value = "...listening";
+      });
+      recognition.onresult = function (e) {
+        var transcript = e.results[0][0].transcript;
+        textarea.value = transcript;
+      };
+    </script>
+  </body>
 </html>
