@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/Hh0KdMk/praxi-logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            --text: #0a0811;
+            --background: #f4f3f9;
+            --primary: #6050af;
+            --secondary: #cea5d6;
+            --secondary30: hsl(290, 37%, 74%, 30%);
+            --secondary20: hsl(290, 37%, 74%, 20%);
+            --accent: #c075bc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page, .header, .header-left, .header-links {
+            display: flex;
+        }
+
+        .page {
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 10px 0;
+            margin: 0;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background);
+            opacity: 0.7;
+        }
+
+        .header-left {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text);
+            padding-left: 50px;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .title {
+            margin: 0 5px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .header-links {
+            padding-right: 50px;
+            gap: 40px;
+        }
+
+        .about {
+            display: flex;
+            padding: 60px 200px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-main-text {
+            font-size: 40px;
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-sub-text {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            text-align: center;
+            padding: 10px 250px;
+            margin: 0;
+        }
+
+        .about-pictures {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding-top: 20px;
+        }
+
+        .picture-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 6px;
+            background-color: var(--secondary30);
+        }
+
+        .picture {
+            border-radius: 6px;
+        }
+
+        .caption {
+            width: 300px;
+            text-align: center;
+            color: black;
+        }
+
+        spline-viewer {
+            position: fixed;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a {
+            color: var(--text);     
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            text-decoration: none;
+        }
+    </style>
+    <title>Praxi</title>
+</head>
+<body> 
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/MYv-Gso2Jz4Mwg-H/scene.splinecode"></spline-viewer>
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <a href="{% url 'landing' %}"><img height="50" width="50" src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
+                <p class="title">Praxi<p>
+            </div>
+            <ul class="header-links">
+                <li><a href="{% url 'landing' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'aiChat' %}">Practice</a></li>
+                <li><a href="{% url 'chatHome' %}">Chatroom</a></li>
+            </ul>
+        </div>
+        <div class="about">
+            <p class="about-main-text">About Us</p>
+            <p class="about-sub-text">
+                Modern language learning programs gate their conversational practice tools behind
+                paywalls, or don't provide them at all. Praxi provides a free way to practice the languages
+                you want to improve with, powered by AI.
+            </p>
+            <div class="about-pictures">
+                <div class="picture-block">
+                    <img height="300" width="300" src="https://pleated-jeans.com/wp-content/uploads/2023/10/funny-images-that-go-hard-1.jpg" alt="" class="picture">
+                    <p class="caption">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+                <div class="picture-block">
+                    <img height="300" width="300" src="https://i.ytimg.com/vi/t5fRBcNSe7c/hqdefault.jpg" alt="" class="picture">
+                    <p class="caption">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+                <div class="picture-block">
+                    <img height="300" width="300" src="https://i.redd.it/passport-given-to-a-mummy-being-shipped-to-a-museum-they-v0-dcffduxmvsbb1.jpg?s=f6465c23d2c5c5fcd610f23aac5fe9e3e8647c5e" alt="" class="picture">
+                    <p class="caption">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            var shadowRoot = document.querySelector('spline-viewer').shadowRoot;
+            shadowRoot.querySelector('#logo').remove();
+        }
+    </script>
+</body>
+</html>

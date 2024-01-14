@@ -176,12 +176,12 @@
     <body>
 		<div class="header">
             <div class="header-left">
-                <img height="50" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1200px-Circle_Davys-Grey_Solid.svg.png" alt="Praxi logo" class="logo">
+                <a href="{% url 'landing' %}"><img height="50" width="50" src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
                 <p class="title">Praxi<p>
             </div>
             <ul class="header-links">
                 <li><a href="{% url 'landing' %}">Home</a></li>
-                <li><a href="">About</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'aiRoom' 'English' 'Intermediate'}">Practice</a></li>
                 <li><a href="{% url 'chatHome'}">Chatroom</a></li>
             </ul> 
