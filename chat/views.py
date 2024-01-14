@@ -8,6 +8,9 @@ import os
 def chatHome(request):
 	return render(request, "chatHome.html")
 
+def aiChat(request):
+	return render(request, "ai_room.html")
+
 def room(request, room_name):
 	chat_log = Chat.objects.filter(room=room_name).order_by('timestamp')
 	return render(request, "room.html", {"room_name": room_name, "chat_log": chat_log})

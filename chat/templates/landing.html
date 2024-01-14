@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            --text: #0a0811;
+            --background: #f4f3f9;
+            --primary: #6050af;
+            --secondary: #cea5d6;
+            --secondary30: hsl(290, 37%, 74%, 30%);
+            --accent: #c075bc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page, .header, .header-left, .header-links, .hero, .hero-buttons {
+            display: flex;
+        }
+
+        .page {
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 10px 0;
+            margin: 0;
+            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.12);
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background);
+            opacity: 0.7;
+        }
+
+        .header-left {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text);
+            padding-left: 50px;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+
+        }
+
+        .title {
+            margin: 0 5px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .header-links {
+            padding-right: 50px;
+            gap: 40px;
+        }
+
+        .hero {
+            padding: 200px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-main-text {
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        span {
+            font-weight: 1000;
+            background: linear-gradient(120deg,var(--primary),var(--accent),var(--primary)) 0 0 / 400% 100%;
+            color: transparent;
+            background-clip: text;
+            animation: gradient 6s linear infinite;
+        }
+
+        @keyframes gradient {
+            to {
+                background-position: 400% 0;
+            }
+        }
+
+        .hero-sub-text {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+            gap: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .toAi,
+        .toChat {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .toAI {
+            width: 200px;
+            flex: 1;
+            border: var(--primary) solid 2px;
+            border-radius: 0.5rem;
+            background-color: var(--secondary30);
+        }
+
+        .toChat {
+            flex: 1;
+            color: var(--background);
+            border-radius: 0.5rem;
+            background-color: var(--primary);
+        }
+
+        spline-viewer {
+            position: fixed;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a {
+            color: var(--text);     
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            text-decoration: none;
+        }
+    </style>
+    <title>Praxi</title>
+</head>
+<body>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/MYv-Gso2Jz4Mwg-H/scene.splinecode"></spline-viewer>
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <img height="50" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1200px-Circle_Davys-Grey_Solid.svg.png" alt="Praxi logo" class="logo">
+                <p class="title">Praxi<p>
+            </div>
+            <ul class="header-links">
+                <li><a href="{% url 'landing' %}">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="{% url 'aiChat' %}">Practice</a></li>
+                <li><a href="{% url 'chatHome' %}">Chatroom</a></li>
+            </ul> 
+        </div>
+        <div class="hero">
+            <p class="hero-main-text"><span>AI-powered</span> language learning for the 21st century.</p>
+            <p class="hero-sub-text">Hone your language skills by conversing with an AI and test your abilities with native speakers.</p>
+            <div class="hero-buttons">
+                <a class="toAI" href="{% url 'aiChat' %}"><p>Chat with AI</p></a>
+                <a class="toChat" href="{% url 'chatHome' %}"><p>Chat with others</p></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            var shadowRoot = document.querySelector('spline-viewer').shadowRoot;
+            shadowRoot.querySelector('#logo').remove();
+        }
+    </script>
+</body>
+</html>
