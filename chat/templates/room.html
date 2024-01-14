@@ -166,6 +166,7 @@
 			}
 		</style>
     </head>
+
     <body class="bg-[#F4F3F9]">
 		<div class="header">
             <div class="header-left">
@@ -258,6 +259,7 @@
 		</div>
 		-->
 		
+
         {{ room_name|json_script:"room-name" }}
         <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
