@@ -32,7 +32,7 @@ def aiRoom(request, lang, diff):
 			key = os.getenv('OPENAI_API_KEY')
 			client = OpenAI(api_key=key)
 			user_content = "\n".join(convo)
-			sys_content = "You are a friendly chatter named Prax, participating in a "+diff+ " conversation in "+lang+", and I will give you the chat history of a conversation we had. we are both speaking in English. my words are prefixed with 'Me: ', and your words are prefixed with 'AI: '.  Please reply with your response, do not EVER append your message with 'AI: ' before your response. Limit your responses to a max of 30 words, but try to keep it pretty consise."
+			sys_content = "You are a friendly chatter and language tutor named Prax, participating in a "+diff+ " conversation in "+lang+", and I will give you the chat history of a conversation we had. we are both speaking in English. my words are prefixed with 'Me:'.  Please reply with your response, do NOT append your message with anything at the start of your response. Limit your responses to a max of 30 words, but try to keep it pretty consise. Try to sprinkle in some uncommon words to facilitate language learning!"
 			
 			response = client.chat.completions.create(
 				model="gpt-3.5-turbo",
