@@ -4,297 +4,250 @@
     <head>
         <meta charset="utf-8" />
         <title>Chat Room</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<style>
-			* {
-			scrollbar-width: auto;
-			scrollbar-color: #999999 #f4f3f9;
-			}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
 
-			/* Chrome, Edge, and Safari */
-			*::-webkit-scrollbar {
-			width: 12px;
-			}
+        body {
+            --text: #0a0811;
+            --background: #f4f3f9;
+            --primary: #6050af;
+            --secondary: #cea5d6;
+            --secondary30: hsl(290, 37%, 74%, 30%);
+            --accent: #c075bc;
+            margin: 0;
+            padding: 0;
+        }
 
-			*::-webkit-scrollbar-track {
-			background: #f4f3f9;
-			border-radius: 8px;
-			}
+        .page, .header, .header-left, .header-links, .hero, .hero-buttons {
+            display: flex;
+        }
 
-			*::-webkit-scrollbar-thumb {
-			background-color: #999999;
-			border-radius: 8px;
-			border: 3px solid #f4f3f9;
-			}
-			* {
-				box-sizing: border-box;
-				font-family: "Roboto", sans-serif;
-			}
-	
-			body {
-				--text: #0a0811;
-				--background: #f4f3f9;
-				--primary: #6050af;
-				--secondary: #cea5d6;
-				--secondary30: hsl(290, 37%, 74%, 30%);
-				--accent: #c075bc;
-				margin: 0;
-				padding: 0;
-			}
-	
-			.page, .header, .header-left, .header-links, .hero, .hero-buttons {
-				display: flex;
-			}
-	
-			.page {
-				flex-direction: column;
-			}
-	
-			.header {
-				padding: 10px 0;
-				margin: 0;
-				box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.12);
-				justify-content: space-between;
-				align-items: center;
-				background-color: var(--background);
-				opacity: 0.7;
-			}
-	
-			.header-left {
-				font-size: 28px;
-				font-style: normal;
-				font-weight: 500;
-				color: var(--text);
-				padding-left: 50px;
-				align-items: center;
-				gap: 15px;
-			}
-	
-			.title {
-				margin: 0 5px;
-				font-family: "Montserrat", sans-serif;
-			}
-	
-			.header-links {
-				padding-right: 50px;
-				gap: 40px;
-			}
-	
-			.hero {
-				padding: 200px;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-				text-align: center;
-			}
-	
-			.hero-main-text {
-				font-size: 40px;
-				font-style: normal;
-				font-weight: 700;
-				margin: 0;
-			}
-	
-			span {
-				font-weight: 1000;
-				background: linear-gradient(120deg,var(--primary),var(--accent),var(--primary)) 0 0 / 400% 100%;
-				color: transparent;
-				background-clip: text;
-				animation: gradient 6s linear infinite;
-			}
-	
-			@keyframes gradient {
-				to {
-					background-position: 400% 0;
-				}
-			}
-	
-			.hero-sub-text {
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-			}
-	
-			.hero-buttons {
-				justify-content: center;
-				gap: 20px;
-				cursor: pointer;
-				text-align: center;
-			}
-	
-			.toAi,
-			.toChat {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				text-align: center;
-			}
-	
-			.toAI {
-				width: 200px;
-				flex: 1;
-				border: var(--primary) solid 2px;
-				border-radius: 0.5rem;
-				background-color: var(--secondary30);
-			}
-	
-			.toChat {
-				flex: 1;
-				color: var(--background);
-				border-radius: 0.5rem;
-				background-color: var(--primary);
-			}
-	
-			spline-viewer {
-				position: fixed;
-				opacity: 0.7;
-				z-index: -1;
-			}
-	
-			ul {
-				margin: 0;
-				padding: 0;
-				list-style-type: none;
-			}
-	
-			a {
-				color: var(--text);     
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				text-decoration: none;
-			}
-		</style>
+        .page {
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 10px 0;
+            margin: 0;
+            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.12);
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background);
+            opacity: 0.7;
+        }
+
+        .header-left {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text);
+            padding-left: 50px;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .title {
+            margin: 0 5px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .header-links {
+            padding-right: 50px;
+            gap: 40px;
+        }
+
+        .hero {
+            padding: 200px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-main-text {
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        span {
+            font-weight: 1000;
+            background: linear-gradient(120deg,var(--primary),var(--accent),var(--primary)) 0 0 / 400% 100%;
+            color: transparent;
+            background-clip: text;
+            animation: gradient 6s linear infinite;
+        }
+
+        @keyframes gradient {
+            to {
+                background-position: 400% 0;
+            }
+        }
+
+        .hero-sub-text {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+            gap: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .toAi,
+        .toChat {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .toAI {
+            width: 200px;
+            flex: 1;
+            border: var(--primary) solid 2px;
+            border-radius: 0.5rem;
+            background-color: var(--secondary30);
+        }
+
+        .toChat {
+            flex: 1;
+            color: var(--background);
+            border-radius: 0.5rem;
+            background-color: var(--primary);
+        }
+
+        spline-viewer {
+            position: fixed;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a {
+            color: var(--text);     
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            text-decoration: none;
+        }
+        </style>
     </head>
-
     <body class="bg-[#F4F3F9]">
-		<div class="header">
+        <div class="header">
             <div class="header-left">
-				<a href="{% url 'landing' %}"><img height="50" width="50" src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
+                <a href="{% url 'landing' %}">
+                    <img height="50"
+                         width="50"
+                         src="https://i.ibb.co/Hh0KdMk/praxi-logo.png"
+                         alt="Praxi logo"
+                         class="logo">
+                </a>
+                <p class="title">Praxi</p>
             </div>
             <ul class="header-links">
-                <li><a href="{% url 'landing' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'aiChat' %}">Practice</a></li>
-                <li><a href="{% url 'chatHome' %}">Chatroom</a></li>
-            </ul> 
+                <li>
+                    <a href="{% url 'landing' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+                <li>
+                    <a href="{% url 'aiRoom' 'English' 'Intermediate' %}">Practice</a>
+                </li>
+                <li>
+                    <a href="{% url 'chatHome' %}">Chatroom</a>
+                </li>
+            </ul>
         </div>
-		
-		<div id="chat-container" class="flex justify-center mt-8">
-			<div class="bg-white shadow-md rounded-lg max-w-lg w-[100%]">
-				<div id="chatbox" class="p-4 h-96 overflow-y-auto">
-				  <!-- Chat messages will be displayed here -->
-				</div>
-				<div class="p-4 border-t flex">
-					<input id="user-input" type="text" placeholder="Message the group!" class="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#6050AF]">
-					<button id="send-button" class="bg-[#6050AF] text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">Send</button>
-				</div>
-			</div>
-		</div>
-		<script>
-			const chatbox = document.getElementById("chatbox");
-			const chatContainer = document.getElementById("chat-container");
-			const userInput = document.getElementById("user-input");
-			const sendButton = document.getElementById("send-button");
-	
-			// Send button event listener
-			sendButton.addEventListener("click", function () {
-				const userMessage = userInput.value;
-				if (userMessage.trim() !== "") {
-					addUserMessage(userMessage);
-					respondToUser(userMessage);
-					userInput.value = "";
-				}
-			});
-
-			// Key up listener
-			userInput.addEventListener("keyup", function (event) {
-				if (event.key === "Enter") {
-					const userMessage = userInput.value;
-					addUserMessage(userMessage);
-					respondToUser(userMessage);
-					userInput.value = "";
-				}
-			});
-	
-			// Adding message
-			function addUserMessage(message) {
-				const messageElement = document.createElement("div");
-				messageElement.classList.add("mb-2", "text-right");
-				messageElement.innerHTML = `<p class="bg-[#6050AF] text-white rounded-lg py-2 px-4 inline-block">${message}</p>`;
-				chatbox.appendChild(messageElement);
-				chatbox.scrollTop = chatbox.scrollHeight;
-			}
-
-			// Adding others messages
-			function addBotMessage(message) {
-				const messageElement = document.createElement("div");
-				messageElement.classList.add("mb-2");
-				// NOTE CHANGE VAR HERE
-				messageElement.innerHTML = `<div><p class="text-gray-400 text-xs">Colin C<p><p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">${message}</p><div>`;
-				chatbox.appendChild(messageElement);
-				chatbox.scrollTop = chatbox.scrollHeight;
-			}
-	
-			function respondToUser(userMessage) {
-				// Replace this with your chatbot logic
-				setTimeout(() => {
-					addBotMessage("This is a response from the chatbot.");
-				}, 500);
-			}
-	
-			</script>
-		<!--
-		<div class="flex justify-center bg-[#F4F3F9]">
-			<div class="mt-2">
-				<div class="w-[100%]">
-					<textarea class="rounded-md w-[840px] bg-[#F4F3F9] border-2 border-[#999999]" rows="20" id="chat-log"></textarea>
-				</div>
-				<div class="w-[100%]">
-					<input class="h-10" id="chat-message-input" type="text" size="100">
-					<input class="bg-transparent hover:bg-[#6050AF] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-[#6050AF] hover:border-transparent rounded" id="chat-message-submit" type="button" value="Send">
-				</div>
-			</div>
-		</div>
-		-->
-		
-
-        {{ room_name|json_script:"room-name" }}
+        <div class="flex flex-col px-48 space-y-6 mt-4">
+            <textarea class="p-5 rounded-md border-2 border-[#999999] bg-[#F4F3F9] pb-2"
+                      id="chat-log"
+                      cols="100"
+                      rows="20">{% if chat_log %}{% for chat in chat_log %}{{ chat.content }}&#13;&#10;{% endfor %}{% endif %}</textarea>
+            <div class="flex">
+                <div>
+                    <input class="mr-6 h-10 rounded-md border-2 border-[#999999] bg-[#F4F3F9]"
+                           id="chat-message-input"
+                           type="text"
+                           size="100" />
+                </div>
+                <div class="flex">
+                    <button class="bg-[#6050af] cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
+                            id="speak">Click to Speak</button>
+                    <p id="textarea"></p>
+                    <input class="bg-[#6050af] cursor-pointer py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
+                           id="chat-message-submit"
+                           type="button"
+                           value="Send" />
+                </div>
+            </div>
+            {{ room_name|json_script:"room-name" }}
+        </div>
         <script>
-        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+      const roomName = JSON.parse(
+        document.getElementById("room-name").textContent
+      );
 
-        const chatSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/chat/'
-            + roomName
-            + '/'
+      const chatSocket = new WebSocket(
+        "ws://" + window.location.host + "/ws/chat/" + roomName + "/"
+      );
+
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        document.querySelector("#chat-log").value += data.message + "\n";
+      };
+
+      chatSocket.onclose = function (e) {
+        console.error("Chat socket closed unexpectedly");
+      };
+
+      document.querySelector("#chat-message-input").focus();
+      document.querySelector("#chat-message-input").onkeyup = function (e) {
+        if (e.keyCode === 13) {
+          // enter, return
+          document.querySelector("#chat-message-submit").click();
+        }
+      };
+
+      document.querySelector("#chat-message-submit").onclick = function (e) {
+        const messageInputDom = document.querySelector("#chat-message-input");
+        const message = messageInputDom.value;
+        chatSocket.send(
+          JSON.stringify({
+            message: '{{ username }}: ' + message,
+          })
         );
-
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
-        };
-
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        document.querySelector('#chat-message-input').focus();
-        document.querySelector('#chat-message-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
-
-        document.querySelector('#chat-message-submit').onclick = function(e) {
-            const messageInputDom = document.querySelector('#chat-message-input');
-            const message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
-            messageInputDom.value = '';
-        };
+        messageInputDom.value = "";
+      };
+        </script>
+        <script>
+      var speak = document.getElementById("speak");
+      var textarea = document.getElementById("chat-message-input");
+      var SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      var recognition = new SpeechRecognition();
+      speak.addEventListener("click", function () {
+        recognition.start();
+        textarea.value = "...listening";
+      });
+      recognition.onresult = function (e) {
+        var transcript = e.results[0][0].transcript;
+        textarea.value = transcript;
+      };
         </script>
     </body>
 </html>

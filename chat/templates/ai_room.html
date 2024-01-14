@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8" />
         <title>Chat Room</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<style>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
 			* {
 			scrollbar-width: auto;
 			scrollbar-color: #999999 #f4f3f9;
@@ -164,43 +164,90 @@
 				font-weight: 400;
 				text-decoration: none;
 			}
-		</style>
+		
+        </style>
     </head>
     <body class="bg-[#F4F3F9]">
-		<div class="header">
+        <div class="header">
             <div class="header-left">
-                <a href="{% url 'landing' %}"><img height="50" width="50" src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
-                <p class="title">Praxi<p>
-            </div>
-            <ul class="header-links">
-                <li><a href="{% url 'landing' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'aiChat' %}">Practice</a></li>
-                <li><a href="{% url 'chatHome' %}">Chatroom</a></li>
-            </ul> 
-        </div>
-		
-		<div id="chat-container" class="flex justify-center mt-8">
-			<div class="bg-white shadow-md rounded-lg max-w-lg w-full">
-				<div id="chatbox" class="p-4 h-96 overflow-y-auto">
-				  <!-- Chat messages will be displayed here -->
-				  <div class="mb-2 text-right">
-					<p class="bg-[#6050AF] text-white rounded-lg py-2 px-4 inline-block">Hello!</p>
-				  </div>
-				  <div class="mb-2">
-					<p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">Bonjour!</p>
-				  </div>
-				</div>
-				<div class="p-4 border-t flex">
-					<input id="user-input" type="text" placeholder="e.g. 'Provide a French language quiz'" class="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#6050AF]">
-					<button id="send-button" class="bg-[#6050AF] text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">Send</button>
-				</div>
-			</div>
-		</div>
-		<script>
+                <img height="50"
+                     width="50"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1200px-Circle_Davys-Grey_Solid.svg.png"
+                     alt="Praxi logo"
+                     class="logo"
+		     href="{% url 'landing' %}">
+                <p class="title">
+                    Praxi
+                    <p>
+                    </div>
+                    <ul class="header-links">
+                        <li>
+                            <a href="{% url 'landing' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'aiChat' %}">Practice</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'chatHome' %}">Chatroom</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="chat-container" class="flex justify-center mt-8">
+                    <div class="bg-white shadow-md rounded-lg max-w-xl w-full">
+                        <div id="chatbox" class="p-4 h-96 overflow-y-auto">
+                            <!-- Chat messages will be displayed here -->
+                            {% if content %}
+                                {% for chat in content %}
+                                    {% if forloop.counter|divisibleby:2 %}
+                                        <div class="mb-2">
+                                            <p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">{{ chat }}!</p>
+                                        </div>
+                                    {% else %}
+                                        <div class="mb-2 text-right">
+                                            <p class="bg-[#6050AF] text-white rounded-lg py-2 px-4 inline-block">{{ chat }}</p>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            <!-- <div class="mb-2 text-right">
+                                <p class="bg-[#6050AF] text-white rounded-lg py-2 px-4 inline-block">Hello!</p>
+                            </div>
+                            <div class="mb-2">
+                                <p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">Bonjour!</p>
+</div> -->
+                        </div>
+                        <div class="p-2 border-t">
+                            
+							<form method="POST">
+                                {% csrf_token %}
+                                <div class="flex">
+                                    <input type="text"
+                                           name='message'
+                                           placeholder="e.g. 'Provide a {{ language }} language quiz'"
+                                           class="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#6050AF]">
+										   <button id="send-button"
+										   type='submit'
+										   class="bg-[#6050AF] text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">
+									   Send
+								   </button>  
+										   
+								   <button class="bg-[#6050af] cursor-pointer py-2.5 px-5 ml-2 me-2 text-sm font-medium text-[#f4f3f9] focus:outline-none rounded-lg border border-gray-200"
+										   id="speak">Click to Speak</button>
+										   
+                                </div>
+                            </form>
+							
+										
+                        </div>
+                    </div>
+                </div>
+                <script>
 			const chatbox = document.getElementById("chatbox");
 			const chatContainer = document.getElementById("chat-container");
-			const userInput = document.getElementById("user-input");
+			const userInput = document.getElementByName("message");
 			const sendButton = document.getElementById("send-button");
 	
 			// Send button event listener
@@ -248,23 +295,26 @@
 				}, 500);
 			}
 	
-			</script>
-		<!--
+			
+                </script>
+                <!--
 		<div class="flex justify-center bg-[#F4F3F9]">
 			<div class="mt-2">
 				<div class="w-[100%]">
 					<textarea class="rounded-md w-[840px] bg-[#F4F3F9] border-2 border-[#999999]" rows="20" id="chat-log"></textarea>
-				</div>
-				<div class="w-[100%]">
-					<input class="h-10" id="chat-message-input" type="text" size="100">
-					<input class="bg-transparent hover:bg-[#6050AF] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-[#6050AF] hover:border-transparent rounded" id="chat-message-submit" type="button" value="Send">
-				</div>
-			</div>
+                                                                                                                                                                                                                        				</div>
+                                                                                                                                                                                                                        				<div class="w-[100%]">
+                                                                                                                                                                                                                        					<input class="h-10" id="chat-message-input" type="text" size="100">
+                                                                                                                                                                                                                        					<input class="bg-transparent hover:bg-[#6050AF] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-[#6050AF] hover:border-transparent rounded"
+                                                                                                                                                                                                                        					       id="chat-message-submit"
+                                                                                                                                                                                         					       type="button"
+                                                                                                                                                                                                                        					       value="Send">
+                                                                                                                                                				</div>
+                                                                        			</div>
 		</div>
-		-->
-		
-        {{ room_name|json_script:"room-name" }}
-        <script>
+-->
+{{ room_name|json_script:"room-name" }}
+<script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         const chatSocket = new WebSocket(
@@ -299,6 +349,23 @@
             }));
             messageInputDom.value = '';
         };
-        </script>
-    </body>
+</script>
+<script>
+	var speak = document.getElementById("speak");
+	var textarea = document.getElementByName("message");
+	var SpeechRecognition =
+	  window.SpeechRecognition || window.webkitSpeechRecognition;
+	var recognition = new SpeechRecognition();
+	speak.addEventListener("click", function (e) {
+	  e.preventDefault();
+	  recognition.start();
+	  textarea.value = "...listening";
+	});
+	recognition.onresult = function (e) {
+	  e.preventdefault();
+	  var transcript = e.results[0][0].transcript;
+	  textarea.value = transcript;
+	};
+	</script>
+</body>
 </html>
