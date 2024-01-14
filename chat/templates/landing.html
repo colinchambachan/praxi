@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://i.ibb.co/Hh0KdMk/praxi-logo.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon"
+              href="https://i.ibb.co/Hh0KdMk/praxi-logo.png"
+              type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+              rel="stylesheet">
+        <style>
         * {
             box-sizing: border-box;
             font-family: "Roboto", sans-serif;
@@ -147,39 +151,64 @@
             font-weight: 400;
             text-decoration: none;
         }
-    </style>
-    <title>Praxi</title>
-</head>
-<body>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
-    <spline-viewer url="https://prod.spline.design/MYv-Gso2Jz4Mwg-H/scene.splinecode"></spline-viewer>
-    <div class="page">
-        <div class="header">
-            <div class="header-left">
-                <a href="{% url 'landing' %}"><img height="50" width="50" src="https://i.ibb.co/Hh0KdMk/praxi-logo.png" alt="Praxi logo" class="logo"></a>
-                <p class="title">Praxi<p>
-            </div>
-            <ul class="header-links">
-                <li><a href="{% url 'landing' %}">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="{% url 'aiChat' %}">Practice</a></li>
-                <li><a href="{% url 'chatHome' %}">Chatroom</a></li>
-            </ul> 
-        </div>
-        <div class="hero">
-            <p class="hero-main-text"><span>AI-powered</span> language learning for the 21st century.</p>
-            <p class="hero-sub-text">Hone your language skills by conversing with an AI and test your abilities with native speakers.</p>
-            <div class="hero-buttons">
-                <a class="toAI" href="{% url 'aiChat' %}"><p>Chat with AI</p></a>
-                <a class="toChat" href="{% url 'chatHome' %}"><p>Chat with others</p></a>
-            </div>
-        </div>
-    </div>
-    <script>
+        </style>
+        <title>Praxi</title>
+    </head>
+    <body>
+        <script type="module"
+                src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/MYv-Gso2Jz4Mwg-H/scene.splinecode"></spline-viewer>
+        <div class="page">
+            <div class="header">
+                <div class="header-left">
+                    <a href="{% url 'landing' %}">
+                        <img height="50"
+                             width="50"
+                             src="https://i.ibb.co/Hh0KdMk/praxi-logo.png"
+                             alt="Praxi logo"
+                             class="logo">
+                    </a>
+                    <p class="title">
+                        Praxi
+                        <p>
+                        </div>
+                        <ul class="header-links">
+                            <li>
+                                <a href="{% url 'landing' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="">About</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aiRoom' 'English' 'Intermediate' %}">Practice</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'chatHome' %}">Chatroom</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hero">
+                        <p class="hero-main-text">
+                            <span>AI-powered</span> language learning for the 21st century.
+                        </p>
+                        <p class="hero-sub-text">
+                            Hone your language skills by conversing with an AI and test your abilities with native speakers.
+                        </p>
+                        <div class="hero-buttons">
+                            <a class="toAI" href="{% url 'aiRoom' 'English' 'Intermediate' %}">
+                                <p>Chat with AI</p>
+                            </a>
+                            <a class="toChat" href="{% url 'chatHome' %}">
+                                <p>Chat with others</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <script>
         window.onload = function() {
             var shadowRoot = document.querySelector('spline-viewer').shadowRoot;
             shadowRoot.querySelector('#logo').remove();
         }
-    </script>
-</body>
-</html>
+                </script>
+            </body>
+        </html>
